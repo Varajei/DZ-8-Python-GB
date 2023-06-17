@@ -7,14 +7,14 @@ phonebook = {}
 def load_phonebook():
     global phonebook
     try:
-        with open('book.json', 'r') as file:
+        with open('phonebook.json', 'r') as file:
             phonebook = json.load(file)
     except FileNotFoundError:
         print('Файл с телефонным справочником не найден')
 
 # Функция для записи телефонного справочника в файл
 def save_phonebook():
-    with open('book.json', 'w') as file:
+    with open('phonebook.json', 'w') as file:
         json.dump(phonebook, file)
 
 # Функция для просмотра всех контактов в телефонном справочнике
@@ -63,4 +63,30 @@ def update_contact():
         print(f'Контакт {last_name} не найден в телефонном справочнике')
 
 # Загружаем телефонный справочник из файла при запуске программы
-# load_phonebook()
+load_phonebook()
+
+# Главный цикл программы
+while True:
+    print('\nВыберите действие:')
+    print('1 - Просмотреть все контакты')
+    print('2 - Добавить новый контакт')
+    print('3 - Удалить контакт')
+    print('4 - Частично изменить контакт')
+    print('5 - Выйти из программы')
+    choice = input('Введите номер действия: ')
+    if choice == '1':
+        view_phonebook()
+    elif choice == '2':
+        add_contact()
+        save_phonebook()
+    elif choice == '3':
+        delete_contact()
+        save_phonebook()
+    elif choice == '4':
+        update_contact()
+        save_phonebook()
+    elif choice == '5':
+        print('До свидания!')
+        break
+    else:
+        print('Неверный выбор')

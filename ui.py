@@ -1,28 +1,28 @@
-from logger import add_contact, find_contact, delete_contact, update_contact, show_contacts
+from logger import view_phonebook, add_contact, save_phonebook, delete_contact, update_contact
 
-# Главное меню программы
+# Главный цикл программы
 def interface():
     while True:
-        print('Меню:')
-        print('1. Добавить новый контакт')
-        print('2. Найти контакт по фамилии')
-        print('3. Удалить контакт по фамилии')
-        print('4. Изменить контакт по фамилии')
-        print('5. Показать список контактов')
-        print('6. Выйти из программы')
-        choice = input('Выберите пункт меню: ')
+        print('\nВыберите действие:')
+        print('1 - Просмотреть все контакты')
+        print('2 - Добавить новый контакт')
+        print('3 - Удалить контакт')
+        print('4 - Частично изменить контакт')
+        print('5 - Выйти из программы')
+        choice = input('Введите номер действия: ')
         if choice == '1':
-           add_contact()
+            view_phonebook()
         elif choice == '2':
-           find_contact()
+            add_contact()
+            save_phonebook()
         elif choice == '3':
-         delete_contact()
+            delete_contact()
+            save_phonebook()
         elif choice == '4':
-          update_contact()
+            update_contact()
+            save_phonebook()
         elif choice == '5':
-          show_contacts()
-        elif choice == '6':
-          break
+            print('До свидания!')
+            break
         else:
-           print('Некорректный ввод')
-        
+            print('Неверный выбор')
